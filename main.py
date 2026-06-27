@@ -21,3 +21,4 @@ print(response.choices[0].message.content)
 # 1.LLM ：申请与付费
 # 2.claude的安装-- CC Switch的安装 -- CC Switch接入claude
 # 3.python环境安装 （python，uv （是 Python 包管理工具））
+# 4. .claude文件修改后，需要重新claude CLI
