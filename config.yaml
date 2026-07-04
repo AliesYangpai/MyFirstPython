@@ -1,0 +1,4 @@
+github_api: https://api.github.com
+name: awesome-agent
+timeout: 15
+version: 1.0
