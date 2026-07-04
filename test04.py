@@ -52,27 +52,45 @@
 # dog = Animal()
 # student.show_info()
 # dog.show_info()
+#
+# class Engin:
+#     def __init__(self,name):
+#         print("Engin__init__")
+#         self.name=name
+#     def __del__(self):
+#         print("Engin__del__")
+#
+#     def do_start_work(self):
+#         print(f"${self.name} start_work")
+#
+# class Car:
+#     def __init__(self,engine):
+#         print("Car__init__")
+#         self.engine=engine
+#     def __del__(self)
+#         print("Car__del__")
+#
+#     def do_start_work(self):
+#         print(" Car start_work")
+#         self.engine.do_start_work()
+#
+# car=Car(Engin("v8"))
+# car.do_start_work()
 
-class Engin:
-    def __init__(self,name):
-        print("Engin__init__")
-        self.name=name
-    def __del__(self):
-        print("Engin__del__")
+# def do_open_file(file_name):
+#     with open(file_name) as f:
+#         print(f.read(-1))
+#
+# do_open_file("./CLAUDE.md")
 
-    def do_start_work(self):
-        print(f"${self.name} start_work")
+def do_open_file2(file_name):
+    with open(file_name) as f:
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            print(line)
+path = "./.claude/settings.local.json"
+do_open_file2(path)
 
-class Car:
-    def __init__(self,engine):
-        print("Car__init__")
-        self.engine=engine
-    def __del__(self):
-        print("Car__del__")
 
-    def do_start_work(self):
-        print(" Car start_work")
-        self.engine.do_start_work()
-
-car=Car(Engin("v8"))
-car.do_start_work()
