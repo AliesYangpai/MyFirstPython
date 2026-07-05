@@ -1,4 +1,4 @@
-# 提示词的基本结构
+# 提示词的基本结构（角色交替，system的对话风格）
 from platform import system
 
 from openai import OpenAI
