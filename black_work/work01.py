@@ -4,6 +4,7 @@
 # 04函数
 # 05面向对象
 import statistics
+from ast import dump
 from audioop import avg
 
 from openai import OpenAI
@@ -158,6 +159,7 @@ from openai import OpenAI
 
 #####
 # 03数据存储容器
+# 列表 list[]
 # def collection_list_work1():
 #     students = ["tom","jerry","torch"]
 #     students.append("lorra")
@@ -192,18 +194,124 @@ from openai import OpenAI
 # collection_list_work3()
 
 # 去重处理
-def collection_list_work4():
-    my_list1 = [1,4,3,2,5]
-    my_list2 = [4,8,6,7,5]
+# def collection_list_work4():
+#     my_list1 = [1,4,3,2,5]
+#     my_list2 = [4,8,6,7,5]
+#
+#     # merge_list = my_list1 + my_list2
+#     merge_list = [*my_list1, *my_list2]
+#     my_new_list = []
+#     for item in merge_list:
+#         if item not in my_new_list:
+#             my_new_list.append(item)
+#
+#     my_new_list.sort()
+#     print(my_new_list)
+# collection_list_work4()
 
-    # merge_list = my_list1 + my_list2
-    merge_list = [*my_list1, *my_list2]
-    my_new_list = []
-    for item in merge_list:
-        if item not in my_new_list:
-            my_new_list.append(item)
+# 元组 ()
+# def tuple_work1():
+#     t1 = (1,2,3)
+#     for el in t1:
+#         print(el)
+#     print(t1)
+# tuple_work1()
 
-    my_new_list.sort()
-    print(my_new_list)
-collection_list_work4()
+# def tuple_work2():
+#     t1 = (1,2,3,4,5,6,7,8,9)
+#     first,*center,last = t1
+#
+#     my_list = [1,2,3,4,5,6,7,8,9]
+#     new_list = [e** 2 for e in my_list]
+#     print(new_list)
+#     print(first)
+#     print(center)
+#     print(last)
+#
+# tuple_work2()
 
+# def set_work1():
+#     s1 = set()
+#     for i in range(9):
+#         s1.add(i)
+#     print(s1)
+#
+#
+# set_work1()
+
+# 集合set
+# def set_work2():
+#     football_set = {"w", "x", "y", "z", "a", "b"}
+#     basketball_set = {"a", "b", "c", "d", "e", "f"}
+#     frechet_set = {"h", "i", "b", "d", "e", "f"}
+#     art_set = {"a", "b", "e", "f", "g", "t"}
+#
+#     fa_set = frechet_set.intersection(art_set)
+#     print(fa_set)
+# set_work2()
+
+# 字典
+# def dict_work1():
+#     dict1 = {
+#         "a": 1,
+#         "b": 2,
+#         "c": 3,
+#     }
+#     dict2 = {
+#         "d": 4,
+#         "e": 5,
+#         "f": 6,
+#     }
+#
+#
+#     list1 = [dict1, dict2]
+#     for dict in list1:
+#         for i, e in enumerate(dict):
+#             print(i, e)
+# dict_work1()
+
+# 函数
+# def fun_wort1(a,b,c):
+#     return a * b * 2 + b * c * 2 + a * c * 2, a * b * c
+# s,tji = fun_wort1(3,4,5)
+# print(s,tji)
+
+# num = 100
+# def fun_wort2(a,b,c):
+#     global num
+#     num= 1000
+#     return a+b+c
+#
+# print(fun_wort2(1, 2, 3))
+# print(num)
+
+# def fun_work3(**kwargs):
+#     if kwargs.get('age'):
+#         print(kwargs['age'])
+#     if kwargs.get('gender'):
+#         print(kwargs['gender'])
+#
+# fun_work3(age=15, gender='male')
+
+# 将函数作为参数传递
+# def fun_add(a,b):
+#     return a+b
+#
+# def fun_calculate(a,b,add):
+#     return add(a,b)
+#
+# print(fun_calculate(1,2,fun_add))
+
+# lamuda
+
+# work1 = lambda x,y:x*y
+# def fun_lambda(x,y,work):
+#     return work(x,y)
+# print(fun_lambda(1,2,work1))
+
+
+# def fun_lambda2(x, y):
+#     ret = x + y
+#     return lambda a: ret ** 2 + a
+# work1 = fun_lambda2(1, 2)
+# print(work1(3))
