@@ -2,3 +2,5 @@ github_api: https://api.github.com
 name: awesome-agent
 timeout: 15
 version: 1.0
+author: albert
+author_code: '001'
