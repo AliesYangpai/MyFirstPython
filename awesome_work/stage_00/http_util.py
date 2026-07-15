@@ -102,3 +102,20 @@ class HttpUtil:
 
     def write_yaml_file(self, file_path: str, dict: dict) -> None:
         asyncio.run(self.execute_write_yaml_file(file_path, dict))
+
+    async def execute_fetch_async2(self, url: str, token: str = "") -> None:
+        try:
+            async with aiohttp.ClientSession() as session:
+                headers = {
+                    "Authorization": f"token {token}"  # 标准鉴权格式
+                }
+                response = await session.request(url=url, method="GET", headers=headers)
+                if response.status == 200:
+                    print(f"execute_fetch_async2 code:{response.status}")
+                else:
+                    print(f"execute_fetch_async2 code:{response.status}")
+        except Exception as e:
+            print(f"execute_fetch_async2 error:{e}")
+
+    def fetch_async2(self, url: str, token: str = "") -> None:
+        asyncio.run(self.execute_fetch_async2(url, token))
