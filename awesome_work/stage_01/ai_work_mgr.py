@@ -53,3 +53,19 @@ class AiWorkMgr:
         ret_usage = response.usage
         print(f"create_msg03 ret_usage:{ret_usage}")
         return response.choices[0].message.content
+
+    def create_msg04_stream(self, user_prompt: str)-> None:
+        response = self.client.chat.completions.create(
+            model="qwen2.5:3b",
+            max_tokens=300,
+            temperature=0.1,
+            messages=[
+                {"role": "user", "content": user_prompt},
+            ],
+            stream=True
+        )
+        for event in response:
+            ret_content = event.choices[0].delta.content
+            if ret_content:
+                print(ret_content,end="",flush=True)
+

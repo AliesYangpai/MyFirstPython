@@ -25,7 +25,7 @@ class HttpUtil:
             print(f"fetch_sync error:{e}")
             return HttpResponse(success=False, data=None, msg=str(e))
 
-    async def execute_fetch_async(self, url: str) -> HttpResponse:
+    async def __execute_fetch_async(self, url: str) -> HttpResponse:
         try:
             async with aiohttp.ClientSession() as session:
                 response = await session.request(url=url, method="GET")
@@ -40,9 +40,9 @@ class HttpUtil:
             return HttpResponse(success=False, data=None, msg=str(e))
 
     def fetch_async(self, url: str) -> HttpResponse:
-        return asyncio.run(self.execute_fetch_async(url))
+        return asyncio.run(self.__execute_fetch_async(url))
 
-    async def execute_open_file(self, file_path: str) -> None:
+    async def __execute_open_file(self, file_path: str) -> None:
         try:
             async with aiofiles.open(file_path, 'r', encoding="utf-8") as f:
                 lines = await f.readlines()
@@ -52,9 +52,9 @@ class HttpUtil:
             print(f"execute_open_file error:{e}")
 
     def open_file(self, file_path: str) -> None:
-        asyncio.run(self.execute_open_file(file_path))
+        asyncio.run(self.__execute_open_file(file_path))
 
-    async def execute_write_file(self, file_path, msg) -> None:
+    async def __execute_write_file(self, file_path, msg) -> None:
         try:
             async with aiofiles.open(file_path, 'w', encoding="utf-8") as f:
                 for index in range(0, 9):
@@ -63,9 +63,9 @@ class HttpUtil:
             print(f"execute_write_file error:{e}")
 
     def write_file(self, file_path: str, msg: str) -> None:
-        asyncio.run(self.execute_write_file(file_path, msg))
+        asyncio.run(self.__execute_write_file(file_path, msg))
 
-    async def execute_write_amend_file(self, file_path: str, msg: str) -> None:
+    async def __execute_write_amend_file(self, file_path: str, msg: str) -> None:
         try:
             async with aiofiles.open(file_path, 'a', encoding="utf-8") as f:
                 for index in range(0, 4):
@@ -74,9 +74,9 @@ class HttpUtil:
             print(f"execute_write_amend_file error:{e}")
 
     def write_amend_file(self, file_path: str, msg: str) -> None:
-        asyncio.run(self.execute_write_amend_file(file_path, msg))
+        asyncio.run(self.__execute_write_amend_file(file_path, msg))
 
-    async def execute_read_yaml_file(self, file_path: str) -> dict:
+    async def __execute_read_yaml_file(self, file_path: str) -> dict:
         try:
             async with aiofiles.open(file_path, 'r', encoding="utf-8") as f:
                 data = await f.read()
@@ -86,9 +86,9 @@ class HttpUtil:
             return None
 
     def read_yaml_file(self, file_path: str) -> dict:
-        return asyncio.run(self.execute_read_yaml_file(file_path))
+        return asyncio.run(self.__execute_read_yaml_file(file_path))
 
-    async def execute_write_yaml_file(self, file_path: str, dict: dict) -> None:
+    async def __execute_write_yaml_file(self, file_path: str, dict: dict) -> None:
         try:
             async with aiofiles.open(file_path, 'r', encoding="utf-8") as f:
                 str_data = await f.read()
@@ -101,9 +101,9 @@ class HttpUtil:
             print(f"execute_write_yaml_file error:{e}")
 
     def write_yaml_file(self, file_path: str, dict: dict) -> None:
-        asyncio.run(self.execute_write_yaml_file(file_path, dict))
+        asyncio.run(self.__execute_write_yaml_file(file_path, dict))
 
-    async def execute_fetch_async2(self, url: str, token: str = "") -> None:
+    async def __execute_fetch_async2(self, url: str, token: str = "") -> None:
         try:
             async with aiohttp.ClientSession() as session:
                 headers = {
@@ -118,4 +118,4 @@ class HttpUtil:
             print(f"execute_fetch_async2 error:{e}")
 
     def fetch_async2(self, url: str, token: str = "") -> None:
-        asyncio.run(self.execute_fetch_async2(url, token))
+        asyncio.run(self.__execute_fetch_async2(url, token))

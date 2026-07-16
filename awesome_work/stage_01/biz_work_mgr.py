@@ -21,3 +21,6 @@ class BizWorkMgr:
             ret_assistant_content = self.ai_work_mgr.create_msg03(chatting_list)
             print(f"do_loop_chatting ret_assistant_content:{ret_assistant_content}")
             chatting_list.append({"role":"assistant","content":ret_assistant_content})
+
+    def do_stream_response(self,user_prompt:str) -> None:
+        self.ai_work_mgr.create_msg04_stream(user_prompt)
