@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 source .venv/bin/activate
 
 # Run the main script (Anthropic API call)
-python main.py
+python main_stage_01.py
 
 # Run the test script
 python test01.py
