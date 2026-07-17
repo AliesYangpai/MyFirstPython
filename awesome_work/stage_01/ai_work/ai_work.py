@@ -24,3 +24,7 @@ class AiWork(ABC):
     @abstractmethod
     def _create_msg_stream(self, user_prompt: str) -> None:
         pass
+
+    @abstractmethod
+    def _create_msg_system_prompt(self, user_prompt: str, system_prompt: str) -> str | None:
+        pass

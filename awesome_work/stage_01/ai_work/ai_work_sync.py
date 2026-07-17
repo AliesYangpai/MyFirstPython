@@ -68,3 +68,18 @@ class AiWorkSync(AiWork):
             ret_content_delta = event.choices[0].delta.content
             if ret_content_delta:
                 print(f"_create_msg_stream ret_content_delta: {ret_content_delta}")
+
+    def _create_msg_system_prompt(self, user_prompt: str, system_prompt: str) -> str | None:
+        response = self.client.chat.completions.create(
+            model="qwen2.5:3b",
+            messages=[{"role": "user", "content": user_prompt},
+                      {"role": "system", "content": system_prompt},
+                      ],
+            max_tokens=300,
+            temperature=0.1,
+        )
+        ret_content = response.choices[0].message.content
+        print(f"_create_msg_system_prompt ret_content: {ret_content}")
+        if ret_content:
+            return ret_content
+        return None

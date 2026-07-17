@@ -31,6 +31,9 @@ class AiWorkAsync(AiWork):
     def _create_msg_stream(self, user_prompt: str) -> None:
         asyncio.run(self.__create_msg_stream(user_prompt))
 
+    def _create_msg_system_prompt(self, user_prompt: str, system_prompt: str) -> str | None:
+        return asyncio.run(self.__create_msg_system_prompt(user_prompt, system_prompt))
+
     async def __create_msg(self, user_prompt: str) -> str | None:
         response = await self.client.chat.completions.create(
             model="qwen2.5:3b",
@@ -80,3 +83,17 @@ class AiWorkAsync(AiWork):
             delta = chunk.choices[0].delta
             if delta is not None:
                 print(delta.content, end="", flush=True)
+
+    async def __create_msg_system_prompt(self, user_prompt: str, system_prompt: str) -> str | None:
+        response = await self.client.chat.completions.create(
+            model="qwen2.5:3b",
+            messages=[{"role": "user", "content": user_prompt},
+                      {"role": "system", "content": system_prompt},],
+            max_tokens=300,
+            temperature=0.1,
+        )
+        ret_content = response.choices[0].message.content
+        print(f"_create_msg_system_prompt ret_content: {ret_content}")
+        if ret_content:
+            return ret_content
+        return None

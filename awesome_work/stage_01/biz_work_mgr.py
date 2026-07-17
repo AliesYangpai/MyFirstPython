@@ -32,3 +32,7 @@ class BizWorkMgr:
 
     def do_stream_response(self, user_prompt: str) -> None:
         self.__ai_work_mgr.create_msg_stream(user_prompt)
+
+    def do_chat_system(self,user_prompt: str) -> None:
+        system_prompt = "你是一个翻译，将user的输入按照西班牙语回答出来"
+        self.__ai_work_mgr.create_msg_system_prompt(user_prompt, system_prompt)
